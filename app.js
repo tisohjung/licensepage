@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -62,9 +63,9 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-app.listen(3001, function() {
-    console.log('server started at port 3001');
-});
+// app.listen(3001, function() {
+//     console.log('server started at port 3001');
+// });
 
 var options = {
    key: fs.readFileSync(__dirname + '/ssl/key.pem'),
