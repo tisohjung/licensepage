@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var http = require('http');
+var https = require('https');
+var path = require('path');
 
 var app = express();
 
@@ -61,4 +64,15 @@ module.exports = app;
 
 app.listen(3001, function() {
     console.log('server started at port 3001');
+});
+
+var options = {
+   key: fs.readFileSync(__dirname + '/ssl/key.pem'),
+    cert: fs.readFileSync(__dirname + '/ssl/cert.pem')
+};
+http.createServer(app).listen(3001, function() {
+    console.log('http server started at port 3001');
+});
+https.createServer(options, app).listen(3002, function() {
+    console.log('https server started at port 3002');
 });
