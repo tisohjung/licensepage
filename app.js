@@ -71,9 +71,9 @@ var options = {
    key: fs.readFileSync(__dirname + '/ssl/key.pem'),
     cert: fs.readFileSync(__dirname + '/ssl/cert.pem')
 };
-http.createServer(app).listen(3001, function() {
+https.createServer(app).listen(3001, function() {
     console.log('http server started at port 3001');
 });
-https.createServer(options, app).listen(3002, function() {
-    console.log('https server started at port 3002');
-});
+// https.createServer(options, app).listen(3002, function() {
+//     console.log('https server started at port 3002');
+// });
